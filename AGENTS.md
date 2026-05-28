@@ -60,7 +60,7 @@ Si una comprobacion no puede ejecutarse, explica el motivo y el riesgo.
 
 - No subas secretos. Usa `.env.local` para valores locales y `.env.example` como contrato publico.
 - Valida variables de entorno desde `src/lib/env.ts`.
-- Mantén `robots.ts`, `sitemap.ts` y JSON-LD coherentes con el contenido real del proyecto.
+- Mantén `robots.ts`, `sitemap.ts`, `manifest.ts`, `opengraph-image.tsx`, `llms.txt` y JSON-LD coherentes con el contenido real del proyecto.
 - Mantén los headers de seguridad de `next.config.ts` salvo que haya una razon clara para cambiarlos.
 - Evita `dangerouslySetInnerHTML`. Si es imprescindible, documenta el origen del HTML y sanitizalo.
 - No anadas dependencias sin justificar su uso en el README o en el resumen final.

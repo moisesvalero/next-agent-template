@@ -18,7 +18,7 @@ export function createPageMetadata({
   title,
   description = siteConfig.description,
   path = "/",
-  image = "/og.png",
+  image = "/opengraph-image",
   noIndex = false,
 }: PageMetadataInput = {}): Metadata {
   const url = absoluteUrl(path);

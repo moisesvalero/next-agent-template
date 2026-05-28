@@ -15,7 +15,7 @@ Plantilla Next.js para crear webs y web apps simples trabajando con agentes de I
 - Zod para validar variables de entorno.
 - shadcn-style components con `components.json`, `cn()` y `Button`.
 - Supabase y Sanity preconfigurados como integraciones opcionales.
-- SEO/AEO/GEO base con metadata, sitemap, robots y JSON-LD.
+- SEO/AEO/GEO base con metadata, sitemap, robots, manifest, Open Graph dinamico, `llms.txt` y JSON-LD.
 
 ## Arranque rapido
 
@@ -106,6 +106,9 @@ La plantilla trae una base razonable para buscadores clasicos y motores de respu
 - `src/components/seo/json-ld.tsx`: inserta datos estructurados de forma segura.
 - `src/app/sitemap.ts`: genera `/sitemap.xml`.
 - `src/app/robots.ts`: genera `/robots.txt`.
+- `src/app/manifest.ts`: genera `/manifest.webmanifest`.
+- `src/app/opengraph-image.tsx`: genera la imagen social por defecto.
+- `src/app/llms.txt/route.ts`: publica `/llms.txt` para agentes y motores de respuesta.
 
 Para cada proyecto, cambia primero `src/config/site.ts` y `NEXT_PUBLIC_APP_URL`. Luego usa `createPageMetadata()` en paginas concretas cuando necesites title, description o canonical propios.
 
