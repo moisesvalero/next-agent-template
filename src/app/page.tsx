@@ -1,8 +1,17 @@
+import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+
+import { JsonLd } from "@/components/seo/json-ld";
+import { Button } from "@/components/ui/button";
+import {
+  createSoftwareApplicationJsonLd,
+  createWebsiteJsonLd,
+} from "@/lib/seo";
+
 const checklist = [
   "Next.js App Router con TypeScript estricto",
   "ESLint, Prettier, Tailwind y tests listos",
   "AGENTS.md preparado para agentes y Superpowers",
-  "Headers de seguridad y validacion de entorno",
+  "SEO/AEO/GEO, Supabase y Sanity preparados",
 ];
 
 const commands = ["npm run dev", "npm run agent:skills", "npm run verify"];
@@ -10,9 +19,13 @@ const commands = ["npm run dev", "npm run agent:skills", "npm run verify"];
 export default function Home() {
   return (
     <main className="bg-background text-foreground min-h-screen">
+      <JsonLd data={createWebsiteJsonLd()} />
+      <JsonLd data={createSoftwareApplicationJsonLd()} />
+
       <section className="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center gap-10 px-6 py-16 sm:px-10">
         <div className="max-w-3xl space-y-6">
-          <p className="text-sm font-medium tracking-[0.18em] text-emerald-700 uppercase">
+          <p className="text-primary flex items-center gap-2 text-sm font-medium tracking-[0.18em] uppercase">
+            <Sparkles className="size-4" aria-hidden="true" />
             Plantilla base
           </p>
           <h1 className="text-4xl font-semibold tracking-normal text-balance sm:text-6xl">
@@ -22,15 +35,31 @@ export default function Home() {
             Clona, instala dependencias, abre tu agente favorito y empieza con
             una base moderna, verificada y documentada.
           </p>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Button asChild>
+              <a href="https://github.com/moisesvalero/next-agent-template/generate">
+                Crear proyecto
+                <ArrowRight className="size-4" aria-hidden="true" />
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href="https://github.com/moisesvalero/next-agent-template#readme">
+                Leer README
+              </a>
+            </Button>
+          </div>
         </div>
 
         <div className="grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm">
+          <div className="border-border bg-card text-card-foreground rounded-lg border p-6 shadow-sm">
             <h2 className="text-lg font-semibold">Incluye</h2>
             <ul className="mt-5 grid gap-3 text-sm text-zinc-700 sm:grid-cols-2">
               {checklist.map((item) => (
                 <li key={item} className="flex gap-3">
-                  <span className="mt-1 size-2 rounded-full bg-emerald-600" />
+                  <CheckCircle2
+                    className="text-primary mt-0.5 size-4 shrink-0"
+                    aria-hidden="true"
+                  />
                   <span>{item}</span>
                 </li>
               ))}

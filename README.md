@@ -13,6 +13,9 @@ Plantilla Next.js para crear webs y web apps simples trabajando con agentes de I
 - Prettier con ordenacion de clases Tailwind.
 - Vitest, jsdom y Testing Library.
 - Zod para validar variables de entorno.
+- shadcn-style components con `components.json`, `cn()` y `Button`.
+- Supabase y Sanity preconfigurados como integraciones opcionales.
+- SEO/AEO/GEO base con metadata, sitemap, robots y JSON-LD.
 
 ## Arranque rapido
 
@@ -40,6 +43,7 @@ npm run build         # build de produccion
 npm run start         # servir build
 npm run lint          # ESLint
 npm run lint:fix      # ESLint con fixes
+npm run ui:add        # anadir componentes con shadcn
 npm run check         # TypeScript sin emitir archivos
 npm run format        # formatear con Prettier
 npm run format:check  # comprobar formato
@@ -85,9 +89,101 @@ claude mcp add --transport http windframe-mcp https://mcp.windframe.dev/mcp
 
 ```text
 src/
-  app/        # rutas, layouts y estilos globales
-  lib/        # utilidades compartidas y validadores
-  test/       # setup de tests
+  app/             # rutas, layouts, sitemap, robots y estilos globales
+  components/      # componentes reutilizables, UI y SEO
+  config/          # configuracion del sitio
+  lib/             # utilidades, env, SEO, servicios y Supabase
+  sanity/          # cliente y queries de Sanity
+  test/            # setup de tests
+```
+
+## SEO, AEO y GEO
+
+La plantilla trae una base razonable para buscadores clasicos y motores de respuesta:
+
+- `src/config/site.ts`: nombre, descripcion, URL, locale y keywords.
+- `src/lib/seo.ts`: helper `createPageMetadata()` y JSON-LD.
+- `src/components/seo/json-ld.tsx`: inserta datos estructurados de forma segura.
+- `src/app/sitemap.ts`: genera `/sitemap.xml`.
+- `src/app/robots.ts`: genera `/robots.txt`.
+
+Para cada proyecto, cambia primero `src/config/site.ts` y `NEXT_PUBLIC_APP_URL`. Luego usa `createPageMetadata()` en paginas concretas cuando necesites title, description o canonical propios.
+
+## UI con shadcn
+
+No se instala shadcn como caja cerrada. La plantilla deja la base compatible:
+
+- `components.json` para que el CLI de shadcn sepa donde poner componentes.
+- `src/lib/utils.ts` con `cn()`.
+- `src/components/ui/button.tsx` como primer componente.
+- Variables de color en `src/app/globals.css`.
+
+Puedes anadir componentes con:
+
+```bash
+npx shadcn@latest add card input textarea form
+```
+
+## Supabase
+
+Supabase queda preparado para auth, base de datos y storage sin obligarte a crear cuenta desde el dia uno.
+
+Archivos:
+
+- `src/lib/supabase/browser.ts`: cliente para componentes cliente.
+- `src/lib/supabase/server.ts`: cliente para Server Components, Route Handlers y Server Actions.
+- `src/lib/services.ts`: detecta si Supabase esta configurado.
+
+Variables:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+```
+
+Uso en cliente:
+
+```tsx
+"use client";
+
+import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
+
+const supabase = createSupabaseBrowserClient();
+```
+
+Uso en servidor:
+
+```tsx
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+
+const supabase = await createSupabaseServerClient();
+```
+
+## Sanity
+
+Sanity queda preparado como CMS headless opcional para blogs, landing pages, portfolios o contenido editable.
+
+Archivos:
+
+- `src/sanity/client.ts`: cliente Sanity.
+- `src/sanity/queries.ts`: query de ejemplo para posts.
+- `src/lib/services.ts`: detecta si Sanity esta configurado.
+
+Variables:
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=
+NEXT_PUBLIC_SANITY_DATASET=production
+SANITY_API_READ_TOKEN=
+```
+
+Uso:
+
+```ts
+import { createSanityClient } from "@/sanity/client";
+import { latestPostsQuery } from "@/sanity/queries";
+
+const posts = await createSanityClient().fetch(latestPostsQuery);
 ```
 
 ## Variables de entorno
@@ -98,7 +194,7 @@ Copia `.env.example` a `.env.local`:
 cp .env.example .env.local
 ```
 
-El contrato de entorno vive en `src/lib/env.ts`. Anade ahi cada variable nueva para fallar pronto si falta o tiene mal formato.
+El contrato de entorno vive en `src/lib/env.ts`. Anade ahi cada variable nueva para fallar pronto si falta o tiene mal formato. Supabase y Sanity son opcionales: si faltan sus variables, la app sigue funcionando.
 
 ## Seguridad incluida
 

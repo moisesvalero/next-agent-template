@@ -49,6 +49,10 @@ Si una comprobacion no puede ejecutarse, explica el motivo y el riesgo.
 - App Router de Next.js en `src/app`.
 - Componentes reutilizables en `src/components`.
 - Utilidades y validadores en `src/lib`.
+- Configuracion de producto y SEO en `src/config/site.ts` y `src/lib/seo.ts`.
+- Componentes tipo shadcn en `src/components/ui`. Usa `components.json` como contrato para nuevos componentes.
+- Supabase es opcional y vive en `src/lib/supabase`. No llames clientes Supabase si faltan variables de entorno.
+- Sanity es opcional y vive en `src/sanity`. No llames clientes Sanity si faltan variables de entorno.
 - Tests junto al codigo o en carpetas `__tests__`, con extension `.test.ts` o `.test.tsx`.
 - Usa Prettier para formato y ESLint para calidad.
 
@@ -56,6 +60,7 @@ Si una comprobacion no puede ejecutarse, explica el motivo y el riesgo.
 
 - No subas secretos. Usa `.env.local` para valores locales y `.env.example` como contrato publico.
 - Valida variables de entorno desde `src/lib/env.ts`.
+- Mantén `robots.ts`, `sitemap.ts` y JSON-LD coherentes con el contenido real del proyecto.
 - Mantén los headers de seguridad de `next.config.ts` salvo que haya una razon clara para cambiarlos.
 - Evita `dangerouslySetInnerHTML`. Si es imprescindible, documenta el origen del HTML y sanitizalo.
 - No anadas dependencias sin justificar su uso en el README o en el resumen final.

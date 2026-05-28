@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+import { siteConfig } from "@/config/site";
+import { createPageMetadata } from "@/lib/seo";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,13 +17,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  ...createPageMetadata(),
   title: {
-    default: "Next Agent Template",
-    template: "%s | Next Agent Template",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "A production-minded Next.js starter prepared for humans working with AI agents.",
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL(siteConfig.url),
 };
 
 export default function RootLayout({
