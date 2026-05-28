@@ -48,6 +48,37 @@ npm run test:watch    # tests en modo watch
 npm run audit         # auditoria de vulnerabilidades high+
 npm run verify        # formato, lint, tipos, tests, build y audit
 npm run agent:skills  # npx autoskills
+npm run agent:impeccable # instala la skill Impeccable en el harness detectado
+npm run design:audit  # detecta patrones visuales flojos con Impeccable
+```
+
+## Herramientas opcionales para diseno con agentes
+
+### Impeccable
+
+[Impeccable](https://impeccable.style/) es una skill para que el agente disene, critique, pula y audite interfaces con mejor criterio visual. Vale la pena para esta plantilla porque vive cerca del codigo, funciona con Codex/Cursor/Claude/Gemini y permite comandos como audit, polish, typeset o colorize.
+
+Instalacion recomendada en cada proyecto clonado:
+
+```bash
+npm run agent:impeccable
+```
+
+Auditoria visual rapida:
+
+```bash
+npm run design:audit
+```
+
+### Windframe MCP
+
+[Windframe MCP](https://windframe.dev/mcp) conecta tu agente a sistemas de diseno, componentes y tokens Tailwind. Es util cuando quieres que el agente genere UI con estilos tipo Linear, ShadCN, Notion o Enterprise sin inventarse valores.
+
+No va como dependencia fija de esta plantilla porque requiere cuenta/OAuth y se configura en el cliente MCP del agente, no dentro de Next.js. Usalo cuando el proyecto necesite una direccion visual mas concreta:
+
+```bash
+# Ejemplo Claude Code
+claude mcp add --transport http windframe-mcp https://mcp.windframe.dev/mcp
 ```
 
 ## Estructura
