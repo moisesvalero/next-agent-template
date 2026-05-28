@@ -4,3 +4,18 @@ coverage
 out
 build
 package-lock.json
+
+# generated
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+.turbo
+dist
+
+# local env and logs
+.env*
+!.env.example
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
