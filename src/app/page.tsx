@@ -14,7 +14,7 @@ const checklist = [
   "SEO/AEO/GEO, Supabase y Sanity preparados",
 ];
 
-const commands = ["npm run dev", "npm run agent:skills", "npm run verify"];
+const commands = ["pnpm run dev", "pnpm run agent:skills", "pnpm run verify"];
 
 export default function Home() {
   return (

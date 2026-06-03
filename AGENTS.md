@@ -11,8 +11,9 @@ Guía operativa para agentes que trabajen en esta plantilla Next.js.
 
 ## Flujo recomendado para agentes
 
-- Ejecuta `npx autoskills` al iniciar un proyecto clonado desde esta plantilla para instalar o actualizar skills útiles para el stack.
-- Para trabajo visual, puedes instalar Impeccable con `npm run agent:impeccable` y después usarlo para auditar, pulir o documentar la interfaz.
+- Este proyecto usa pnpm. No uses npm ni generes `package-lock.json` salvo petición explícita.
+- Ejecuta `pnpm dlx autoskills` al iniciar un proyecto clonado desde esta plantilla para instalar o actualizar skills útiles para el stack.
+- Para trabajo visual, puedes instalar Impeccable con `pnpm run agent:impeccable` y después usarlo para auditar, pulir o documentar la interfaz.
 - Windframe MCP es opcional y depende de la cuenta del usuario. No lo instales como dependencia del proyecto: configúralo en el agente MCP del usuario cuando necesites estilos/tokens de Windframe.
 - Si usas Superpowers, activa primero la skill adecuada al tipo de tarea:
   - `brainstorming` para definir funciones nuevas o cambios de producto.
@@ -27,18 +28,18 @@ Guía operativa para agentes que trabajen en esta plantilla Next.js.
 Ejecuta los que apliquen antes de terminar cualquier cambio de código:
 
 ```bash
-npm run format:check
-npm run lint
-npm run check
-npm test
-npm run build
-npm run design:audit
+pnpm run format:check
+pnpm run lint
+pnpm run check
+pnpm test
+pnpm run build
+pnpm run design:audit
 ```
 
 Para una pasada completa:
 
 ```bash
-npm run verify
+pnpm run verify
 ```
 
 Si una comprobación no puede ejecutarse, explica el motivo y el riesgo.

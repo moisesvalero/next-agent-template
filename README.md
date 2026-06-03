@@ -20,9 +20,9 @@ Plantilla Next.js para crear webs y web apps simples trabajando con agentes de I
 ## Arranque rápido
 
 ```bash
-npm install
-npm run agent:skills
-npm run dev
+pnpm install
+pnpm run agent:skills
+pnpm run dev
 ```
 
 Abre `http://localhost:3000`.
@@ -32,28 +32,28 @@ Abre `http://localhost:3000`.
 1. Clona esta plantilla para cada proyecto nuevo.
 2. Abre la carpeta con tu agente favorito.
 3. Pídele que lea `AGENTS.md` antes de modificar código.
-4. Ejecuta `npm run agent:skills` si quieres que `npx autoskills` detecte skills útiles para el proyecto.
-5. Antes de cerrar una tarea, pide siempre `npm run verify`.
+4. Ejecuta `pnpm run agent:skills` si quieres que `pnpm dlx autoskills` detecte skills útiles para el proyecto.
+5. Antes de cerrar una tarea, pide siempre `pnpm run verify`.
 
 ## Scripts
 
 ```bash
-npm run dev           # servidor local
-npm run build         # build de producción
-npm run start         # servir build
-npm run lint          # ESLint
-npm run lint:fix      # ESLint con fixes
-npm run ui:add        # añadir componentes con shadcn
-npm run check         # TypeScript sin emitir archivos
-npm run format        # formatear con Prettier
-npm run format:check  # comprobar formato
-npm test              # tests unitarios
-npm run test:watch    # tests en modo watch
-npm run audit         # auditoria de vulnerabilidades high+
-npm run verify        # formato, lint, tipos, tests, build y audit
-npm run agent:skills  # npx autoskills
-npm run agent:impeccable # instala la skill Impeccable en el harness detectado
-npm run design:audit  # detecta patrones visuales flojos con Impeccable
+pnpm run dev           # servidor local
+pnpm run build         # build de producción
+pnpm run start         # servir build
+pnpm run lint          # ESLint
+pnpm run lint:fix      # ESLint con fixes
+pnpm run ui:add        # añadir componentes con shadcn
+pnpm run check         # TypeScript sin emitir archivos
+pnpm run format        # formatear con Prettier
+pnpm run format:check  # comprobar formato
+pnpm test              # tests unitarios
+pnpm run test:watch    # tests en modo watch
+pnpm run audit         # auditoria de vulnerabilidades high+
+pnpm run verify        # formato, lint, tipos, tests, build y audit
+pnpm run agent:skills  # pnpm dlx autoskills
+pnpm run agent:impeccable # instala la skill Impeccable en el harness detectado
+pnpm run design:audit  # detecta patrones visuales flojos con Impeccable
 ```
 
 ## Herramientas opcionales para diseño con agentes
@@ -65,13 +65,13 @@ npm run design:audit  # detecta patrones visuales flojos con Impeccable
 Instalación recomendada en cada proyecto clonado:
 
 ```bash
-npm run agent:impeccable
+pnpm run agent:impeccable
 ```
 
 Auditoria visual rapida:
 
 ```bash
-npm run design:audit
+pnpm run design:audit
 ```
 
 ### Windframe MCP
@@ -124,7 +124,7 @@ No se instala shadcn como caja cerrada. La plantilla deja la base compatible:
 Puedes añadir componentes con:
 
 ```bash
-npx shadcn@latest add card input textarea form
+pnpm dlx shadcn@latest add card input textarea form
 ```
 
 ## Supabase
@@ -205,8 +205,8 @@ El contrato de entorno vive en `src/lib/env.ts`. Añade ahí cada variable nueva
 - Headers base: `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`.
 - HSTS solo en producción.
 - `.env*` ignorado por Git.
-- `npm audit --audit-level=high` en la verificación completa.
-- Dependabot para npm y GitHub Actions.
+- `pnpm audit --audit-level high` en la verificación completa.
+- Dependabot para dependencias JavaScript y GitHub Actions.
 
 ## Crear un proyecto desde esta plantilla
 
@@ -215,9 +215,9 @@ Cuando la subas a GitHub, puedes usarla como template o clonarla:
 ```bash
 git clone <tu-repo> mi-proyecto
 cd mi-proyecto
-npm install
-npm run agent:skills
-npm run verify
+pnpm install
+pnpm run agent:skills
+pnpm run verify
 ```
 
 Después cambia `name`, `metadata`, textos de la home y variables de entorno según el proyecto.

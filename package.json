@@ -2,23 +2,24 @@
   "name": "next-agent-template",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.24.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "ui:add": "npx shadcn@latest add",
+    "ui:add": "pnpm dlx shadcn@latest add",
     "check": "tsc --noEmit",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "test": "vitest run",
     "test:watch": "vitest",
-    "audit": "npm audit --audit-level=high",
-    "agent:skills": "npx autoskills",
-    "agent:impeccable": "npx skills add pbakaus/impeccable",
-    "design:audit": "npx impeccable detect src/ --fast",
-    "verify": "npm run format:check && npm run lint && npm run check && npm test && npm run build && npm run audit"
+    "audit": "pnpm audit --audit-level high",
+    "agent:skills": "pnpm dlx autoskills",
+    "agent:impeccable": "pnpm dlx skills add pbakaus/impeccable",
+    "design:audit": "pnpm dlx impeccable detect src/",
+    "verify": "pnpm run format:check && pnpm run lint && pnpm run check && pnpm test && pnpm run build && pnpm run audit"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -55,7 +56,9 @@
     "typescript": "^5",
     "vitest": "^4.1.7"
   },
-  "overrides": {
-    "postcss": "^8.5.15"
+  "pnpm": {
+    "overrides": {
+      "postcss": "^8.5.15"
+    }
   }
 }
