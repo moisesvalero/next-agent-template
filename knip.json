@@ -1,0 +1,10 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "ignore": ["src/lib/supabase/**", "src/sanity/**"],
+  "ignoreDependencies": [
+    "@sanity/client",
+    "@supabase/ssr",
+    "@supabase/supabase-js",
+    "groq"
+  ]
+}

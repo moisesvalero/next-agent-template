@@ -3,13 +3,14 @@ import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
 import {
+  createOrganizationJsonLd,
   createSoftwareApplicationJsonLd,
   createWebsiteJsonLd,
 } from "@/lib/seo";
 
 const checklist = [
   "Next.js App Router con TypeScript estricto",
-  "ESLint, Prettier, Tailwind y tests listos",
+  "Oxlint, Knip, Prettier, Tailwind y tests listos",
   "AGENTS.md preparado para agentes y Superpowers",
   "SEO/AEO/GEO, Supabase y Sanity preparados",
 ];
@@ -20,6 +21,7 @@ export default function Home() {
   return (
     <main className="bg-background text-foreground min-h-screen">
       <JsonLd data={createWebsiteJsonLd()} />
+      <JsonLd data={createOrganizationJsonLd()} />
       <JsonLd data={createSoftwareApplicationJsonLd()} />
 
       <section className="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center gap-10 px-6 py-16 sm:px-10">

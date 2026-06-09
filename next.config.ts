@@ -1,3 +1,5 @@
+import { realpathSync } from "node:fs";
+
 import type { NextConfig } from "next";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -5,6 +7,9 @@ const isProduction = process.env.NODE_ENV === "production";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  turbopack: {
+    root: realpathSync.native(process.cwd()),
+  },
   async headers() {
     return [
       {

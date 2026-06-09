@@ -28,9 +28,10 @@ Guía operativa para agentes que trabajen en esta plantilla Next.js.
 Ejecuta los que apliquen antes de terminar cualquier cambio de código:
 
 ```bash
-pnpm run format:check
 pnpm run lint
+pnpm run knip
 pnpm run check
+pnpm run format:check
 pnpm test
 pnpm run build
 pnpm run design:audit
@@ -55,7 +56,7 @@ Si una comprobación no puede ejecutarse, explica el motivo y el riesgo.
 - Supabase es opcional y vive en `src/lib/supabase`. No llames clientes Supabase si faltan variables de entorno.
 - Sanity es opcional y vive en `src/sanity`. No llames clientes Sanity si faltan variables de entorno.
 - Tests junto al código o en carpetas `__tests__`, con extensión `.test.ts` o `.test.tsx`.
-- Usa Prettier para formato y ESLint para calidad.
+- Usa Prettier para formato, oxlint para linting rápido y knip para detectar dependencias, exports y archivos sin uso.
 
 ## Seguridad básica
 

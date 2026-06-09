@@ -1,6 +1,6 @@
 # Next Agent Template
 
-Plantilla Next.js para crear webs y web apps simples trabajando con agentes de IA. Viene con TypeScript, App Router, Tailwind CSS, ESLint, Prettier, tests, validación de entorno, headers de seguridad y una guía `AGENTS.md` lista para Codex, Claude, Cursor u otros agentes.
+Plantilla Next.js para crear webs y web apps simples trabajando con agentes de IA. Viene con TypeScript, App Router, Tailwind CSS, oxlint, knip, Prettier, tests, hooks de pre-commit, validación de entorno, headers de seguridad y una guía `AGENTS.md` lista para Codex, Claude, Cursor u otros agentes.
 
 ![Captura de la plantilla](docs/images/home-screenshot.png)
 
@@ -11,9 +11,11 @@ Demo: [https://next-agent-template.vercel.app](https://next-agent-template.verce
 - Next.js 16 con App Router.
 - React 19 y TypeScript estricto.
 - Tailwind CSS 4.
-- ESLint 9 con reglas de Next y seguridad.
+- Oxlint para análisis estático rápido.
+- Knip para detectar dependencias, exports y archivos sin uso.
 - Prettier con ordenación de clases Tailwind.
 - Vitest, jsdom y Testing Library.
+- Husky y lint-staged para validar antes de cada commit.
 - Zod para validar variables de entorno.
 - shadcn-style components con `components.json`, `cn()` y `Button`.
 - Supabase y Sanity preconfigurados como integraciones opcionales.
@@ -43,8 +45,9 @@ Abre `http://localhost:3000`.
 pnpm run dev           # servidor local
 pnpm run build         # build de producción
 pnpm run start         # servir build
-pnpm run lint          # ESLint
-pnpm run lint:fix      # ESLint con fixes
+pnpm run lint          # oxlint
+pnpm run lint:fix      # oxlint con fixes
+pnpm run knip          # dependencias, exports y archivos sin uso
 pnpm run ui:add        # añadir componentes con shadcn
 pnpm run check         # TypeScript sin emitir archivos
 pnpm run format        # formatear con Prettier
@@ -52,7 +55,7 @@ pnpm run format:check  # comprobar formato
 pnpm test              # tests unitarios
 pnpm run test:watch    # tests en modo watch
 pnpm run audit         # auditoria de vulnerabilidades high+
-pnpm run verify        # formato, lint, tipos, tests, build y audit
+pnpm run verify        # lint, knip, tipos, formato, tests, build y audit
 pnpm run agent:skills  # pnpm dlx autoskills
 pnpm run agent:impeccable # instala la skill Impeccable en el harness detectado
 pnpm run design:audit  # detecta patrones visuales flojos con Impeccable
@@ -209,6 +212,7 @@ El contrato de entorno vive en `src/lib/env.ts`. Añade ahí cada variable nueva
 - `.env*` ignorado por Git.
 - `pnpm audit --audit-level high` en la verificación completa.
 - Dependabot para dependencias JavaScript y GitHub Actions.
+- Hook pre-commit con lint-staged, TypeScript y Vitest.
 
 ## Crear un proyecto desde esta plantilla
 
