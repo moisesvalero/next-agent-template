@@ -2,7 +2,8 @@ export const locales = {
   es: {
     baseTemplate: "Plantilla base",
     title: "Next.js listo para crear webs con agentes desde el minuto uno.",
-    description: "Clona, instala dependencias, abre tu agente favorito y empieza con una base moderna, verificada y documentada.",
+    description:
+      "Clona, instala dependencias, abre tu agente favorito y empieza con una base moderna, verificada y documentada.",
     createProject: "Crear proyecto",
     readReadme: "Leer README",
     includes: "Incluye",
@@ -17,7 +18,8 @@ export const locales = {
   en: {
     baseTemplate: "Base Template",
     title: "Next.js ready for building websites with AI agents from day one.",
-    description: "Clone, install dependencies, open your favorite agent, and start with a modern, verified, and documented codebase.",
+    description:
+      "Clone, install dependencies, open your favorite agent, and start with a modern, verified, and documented codebase.",
     createProject: "Create project",
     readReadme: "Read README",
     includes: "Includes",
@@ -28,7 +30,5 @@ export const locales = {
       "SEO/AEO/GEO, Supabase, and Sanity ready",
     ],
     firstCommands: "Quickstart commands",
-  }
+  },
 };
-
-export type LocaleType = keyof typeof locales;

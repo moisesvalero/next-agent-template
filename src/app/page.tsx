@@ -5,7 +5,6 @@ import { cookies, headers } from "next/headers";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
-import { siteConfig } from "@/config/site";
 import { locales } from "@/dictionaries/locales";
 import {
   createOrganizationJsonLd,
@@ -19,9 +18,12 @@ export async function generateMetadata(): Promise<Metadata> {
   const cookieStore = await cookies();
   const localeCookie = cookieStore.get("NEXT_LOCALE")?.value;
   const acceptLanguage = (await headers()).get("accept-language") || "";
-  const locale = (localeCookie === "en" || localeCookie === "es") 
-    ? localeCookie 
-    : (acceptLanguage.startsWith("en") ? "en" : "es");
+  const locale =
+    localeCookie === "en" || localeCookie === "es"
+      ? localeCookie
+      : acceptLanguage.startsWith("en")
+        ? "en"
+        : "es";
 
   const t = locales[locale];
 
@@ -35,14 +37,17 @@ export default async function Home() {
   const cookieStore = await cookies();
   const localeCookie = cookieStore.get("NEXT_LOCALE")?.value;
   const acceptLanguage = (await headers()).get("accept-language") || "";
-  const locale = (localeCookie === "en" || localeCookie === "es") 
-    ? localeCookie 
-    : (acceptLanguage.startsWith("en") ? "en" : "es");
+  const locale =
+    localeCookie === "en" || localeCookie === "es"
+      ? localeCookie
+      : acceptLanguage.startsWith("en")
+        ? "en"
+        : "es";
 
   const t = locales[locale];
 
   return (
-    <main className="bg-background text-foreground min-h-screen relative">
+    <main className="bg-background text-foreground relative min-h-screen">
       <div className="absolute top-6 right-6 z-50">
         <LanguageSwitcher currentLocale={locale} />
       </div>

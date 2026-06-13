@@ -34,7 +34,8 @@ export default async function RootLayout({
   const cookieStore = await cookies();
   const localeCookie = cookieStore.get("NEXT_LOCALE")?.value;
   const acceptLanguage = (await headers()).get("accept-language") || "";
-  const locale = localeCookie || (acceptLanguage.startsWith("en") ? "en" : "es");
+  const locale =
+    localeCookie || (acceptLanguage.startsWith("en") ? "en" : "es");
 
   return (
     <html

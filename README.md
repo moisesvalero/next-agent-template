@@ -143,17 +143,20 @@ pnpm dlx shadcn@latest add card input textarea form
 Supabase is pre-configured for authentication, database access, and storage. You don't need to create an account immediately to run the app.
 
 Key Files:
+
 - `src/lib/supabase/browser.ts`: Supabase client for client-side components.
 - `src/lib/supabase/server.ts`: Supabase client for Server Components, Route Handlers, and Server Actions.
 - `src/lib/services.ts`: Utility to check if Supabase is active and configured.
 
 Environment Variables:
+
 ```env
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
 Usage in Client Components:
+
 ```tsx
 "use client";
 
@@ -163,6 +166,7 @@ const supabase = createSupabaseBrowserClient();
 ```
 
 Usage in Server Components:
+
 ```tsx
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -174,11 +178,13 @@ const supabase = await createSupabaseServerClient();
 Sanity is prepared as a headless CMS for blogs, landing pages, portfolios, and easily editable content.
 
 Key Files:
+
 - `src/sanity/client.ts`: Sanity client initialization.
 - `src/sanity/queries.ts`: Example GROQ query for fetching posts.
 - `src/lib/services.ts`: Utility to check if Sanity is configured.
 
 Environment Variables:
+
 ```env
 NEXT_PUBLIC_SANITY_PROJECT_ID=
 NEXT_PUBLIC_SANITY_DATASET=production
@@ -186,6 +192,7 @@ SANITY_API_READ_TOKEN=
 ```
 
 Usage:
+
 ```ts
 import { createSanityClient } from "@/sanity/client";
 import { latestPostsQuery } from "@/sanity/queries";
