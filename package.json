@@ -18,8 +18,7 @@
     "test:watch": "vitest",
     "audit": "pnpm audit --audit-level high",
     "agent:skills": "pnpm dlx autoskills",
-    "agent:impeccable": "pnpm dlx skills add pbakaus/impeccable",
-    "design:audit": "pnpm dlx impeccable detect src/",
+    "agent:impeccable": "pnpm dlx impeccable skills install",
     "verify": "pnpm run lint && pnpm run knip && pnpm run check && pnpm run format:check && pnpm test && pnpm run build && pnpm run audit",
     "precommit": "lint-staged && pnpm run check && pnpm run test",
     "prepare": "husky"

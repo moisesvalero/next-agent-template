@@ -1,68 +1,67 @@
 # AGENTS.md
 
-Guía operativa para agentes que trabajen en esta plantilla Next.js.
+Operational guide for AI agents working on this Next.js template.
 
-## Prioridades
+## Priorities
 
-1. Respeta primero las instrucciones directas del usuario.
-2. Lee este archivo antes de tocar código.
-3. En esta versión de Next.js puede haber cambios posteriores a tu entrenamiento. Antes de modificar APIs de Next, consulta `node_modules/next/dist/docs/` o la documentación oficial actual.
-4. Mantén los cambios pequeños, verificables y fáciles de revertir.
+1. Always prioritize the user's direct instructions first.
+2. Read this file before modifying any code.
+3. Next.js might have received updates after your knowledge cutoff. Before modifying Next.js APIs, consult `node_modules/next/dist/docs/` or the official up-to-date documentation.
+4. Keep changes small, testable, and easy to roll back.
 
-## Flujo recomendado para agentes
+## Recommended Flow for Agents
 
-- Este proyecto usa pnpm. No uses npm ni generes `package-lock.json` salvo petición explícita.
-- Ejecuta `pnpm dlx autoskills` al iniciar un proyecto clonado desde esta plantilla para instalar o actualizar skills útiles para el stack.
-- Para trabajo visual, puedes instalar Impeccable con `pnpm run agent:impeccable` y después usarlo para auditar, pulir o documentar la interfaz.
-- Windframe MCP es opcional y depende de la cuenta del usuario. No lo instales como dependencia del proyecto: configúralo en el agente MCP del usuario cuando necesites estilos/tokens de Windframe.
-- Si usas Superpowers, activa primero la skill adecuada al tipo de tarea:
-  - `brainstorming` para definir funciones nuevas o cambios de producto.
-  - `test-driven-development` para bugfixes o lógica nueva.
-  - `systematic-debugging` para fallos, regresiones o errores de tests.
-  - `verification-before-completion` antes de afirmar que algo está terminado.
-- Antes de editar, revisa `package.json`, la estructura de `src/` y los scripts disponibles.
-- No reviertas cambios del usuario. Si encuentras cambios ajenos, trabaja con ellos o pregunta si bloquean la tarea.
+- This project uses **pnpm**. Do not use `npm` or generate a `package-lock.json` file unless explicitly requested.
+- Run `pnpm dlx autoskills` (or use the helper script `pnpm run agent:skills`) when starting a project cloned from this template to install or update helpful system skills tailored for this stack. Learn more at [AutoSkills](https://www.autoskills.sh/).
+- For UI/UX work, you can install the Impeccable skill with `pnpm run agent:impeccable` and use it to audit, polish, or document the interface.
+- If you support Superpowers or specialized skill sets, activate the appropriate skill before starting the task:
+  - `brainstorming`: Defining new features or product changes.
+  - `test-driven-development`: Writing bugfixes or new business logic.
+  - `systematic-debugging`: Debugging errors, regressions, or test failures.
+  - `verification-before-completion`: Verifying your changes before declaring a task finished.
+- Before editing, review `package.json`, the structure under `src/`, and the available scripts.
+- Do not revert user changes. If you encounter changes made by the user, adapt to them or ask for clarification if they block your progress.
 
-## Comandos de verificación
+## Verification Commands
 
-Ejecuta los que apliquen antes de terminar cualquier cambio de código:
+Run the commands that apply to your changes before concluding any task:
 
 ```bash
-pnpm run lint
-pnpm run knip
-pnpm run check
-pnpm run format:check
-pnpm test
-pnpm run build
-pnpm run design:audit
+pnpm run lint          # Run oxlint check
+pnpm run knip          # Detect unused dependencies and files
+pnpm run check         # Run TypeScript type check
+pnpm run format:check  # Check formatting with Prettier
+pnpm test              # Run unit tests with Vitest
+pnpm run build         # Build the application
+pnpm run design:audit  # Perform visual audit with Impeccable (if installed)
 ```
 
-Para una pasada completa:
+To run all checks at once:
 
 ```bash
 pnpm run verify
 ```
 
-Si una comprobación no puede ejecutarse, explica el motivo y el riesgo.
+If a check cannot be executed, explain why and state the associated risks.
 
-## Convenciones del proyecto
+## Project Conventions
 
-- TypeScript estricto.
-- App Router de Next.js en `src/app`.
-- Componentes reutilizables en `src/components`.
-- Utilidades y validadores en `src/lib`.
-- Configuración de producto y SEO en `src/config/site.ts` y `src/lib/seo.ts`.
-- Componentes tipo shadcn en `src/components/ui`. Usa `components.json` como contrato para nuevos componentes.
-- Supabase es opcional y vive en `src/lib/supabase`. No llames clientes Supabase si faltan variables de entorno.
-- Sanity es opcional y vive en `src/sanity`. No llames clientes Sanity si faltan variables de entorno.
-- Tests junto al código o en carpetas `__tests__`, con extensión `.test.ts` o `.test.tsx`.
-- Usa Prettier para formato, oxlint para linting rápido y knip para detectar dependencias, exports y archivos sin uso.
+- Strict TypeScript usage.
+- Next.js App Router under `src/app`.
+- Reusable components under `src/components`.
+- Utilities and validators under `src/lib`.
+- Site config and SEO metadata definitions in `src/config/site.ts` and `src/lib/seo.ts`.
+- shadcn-style components in `src/components/ui`. Use `components.json` as the configuration contract for new components.
+- Supabase integrations are optional and reside in `src/lib/supabase`. Do not instantiate Supabase clients if env variables are missing.
+- Sanity integrations are optional and reside in `src/sanity`. Do not instantiate Sanity clients if env variables are missing.
+- Write tests alongside the code or in `__tests__` folders, using `.test.ts` or `.test.tsx` extensions.
+- Use Prettier for formatting, oxlint for fast static analysis, and knip to detect unused dependencies, exports, or orphan files.
 
-## Seguridad básica
+## Basic Security
 
-- No subas secretos. Usa `.env.local` para valores locales y `.env.example` como contrato público.
-- Valida variables de entorno desde `src/lib/env.ts`.
-- Mantén `robots.ts`, `sitemap.ts`, `manifest.ts`, `opengraph-image.tsx`, `llms.txt` y JSON-LD coherentes con el contenido real del proyecto.
-- Mantén los headers de seguridad de `next.config.ts` salvo que haya una razón clara para cambiarlos.
-- Evita `dangerouslySetInnerHTML`. Si es imprescindible, documenta el origen del HTML y sanitízalo.
-- No añadas dependencias sin justificar su uso en el README o en el resumen final.
+- Never commit secrets or API keys. Use `.env.local` for local secrets and `.env.example` as a public contract.
+- Validate all environment variables through `src/lib/env.ts`.
+- Keep `robots.ts`, `sitemap.ts`, `manifest.ts`, `opengraph-image.tsx`, `llms.txt`, and JSON-LD structured data in sync with the actual project content.
+- Do not change security headers in `next.config.ts` unless there is a clear and justified reason.
+- Avoid `dangerouslySetInnerHTML`. If strictly necessary, document the HTML source and sanitize it properly.
+- Do not add new dependencies without justifying their usage in the final summary or README.

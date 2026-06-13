@@ -1,27 +1,27 @@
 # Next Agent Template
 
-Plantilla Next.js para crear webs y web apps simples trabajando con agentes de IA. Viene con TypeScript, App Router, Tailwind CSS, oxlint, knip, Prettier, tests, hooks de pre-commit, validación de entorno, headers de seguridad y una guía `AGENTS.md` lista para Codex, Claude, Cursor u otros agentes.
+A Next.js template tailored for building websites and web applications in collaboration with AI agents. It comes pre-configured with TypeScript, App Router, Tailwind CSS 4, oxlint, knip, Prettier, unit tests, pre-commit hooks, environment validation, security headers, and an `AGENTS.md` guide ready for Claude Code, Cursor, Windsurf, Gemini, or other AI coding assistants.
 
-![Captura de la plantilla](docs/images/home-screenshot.png)
+![Template Screenshot](docs/images/home-screenshot.png)
 
 Demo: [https://next-agent-template.vercel.app](https://next-agent-template.vercel.app)
 
-## Stack
+## Tech Stack
 
-- Next.js 16 con App Router.
-- React 19 y TypeScript estricto.
-- Tailwind CSS 4.
-- Oxlint para análisis estático rápido.
-- Knip para detectar dependencias, exports y archivos sin uso.
-- Prettier con ordenación de clases Tailwind.
-- Vitest, jsdom y Testing Library.
-- Husky y lint-staged para validar antes de cada commit.
-- Zod para validar variables de entorno.
-- shadcn-style components con `components.json`, `cn()` y `Button`.
-- Supabase y Sanity preconfigurados como integraciones opcionales.
-- SEO/AEO/GEO base con metadata, sitemap, robots, manifest, Open Graph dinámico, `llms.txt` y JSON-LD.
+- **Framework**: Next.js 16 (App Router)
+- **Library & Language**: React 19 & Strict TypeScript
+- **Styling**: Tailwind CSS v4
+- **Linter**: Oxlint for lightning-fast static analysis
+- **Dead Code/Dependency Detector**: Knip to catch unused dependencies, exports, and files
+- **Formatter**: Prettier with Tailwind CSS class sorting
+- **Testing**: Vitest, jsdom, and React Testing Library
+- **Git Hooks**: Husky & lint-staged to validate code before every commit
+- **Validation**: Zod for strict environment variable validation
+- **UI Base**: shadcn-style component baseline with `components.json`, `cn()` utility, and a `Button` component
+- **Optional Integrations**: Pre-configured Supabase and Sanity clients
+- **SEO/AEO/GEO**: Pre-configured metadata, sitemap, robots, manifest, dynamic Open Graph, `llms.txt` route, and JSON-LD structured data
 
-## Arranque rápido
+## Quick Start
 
 ```bash
 pnpm install
@@ -29,128 +29,131 @@ pnpm run agent:skills
 pnpm run dev
 ```
 
-Abre `http://localhost:3000`.
+Then open `http://localhost:3000` in your browser.
 
-## Trabajar con agentes
+## Working with AI Agents
 
-1. Clona esta plantilla para cada proyecto nuevo.
-2. Abre la carpeta con tu agente favorito.
-3. Pídele que lea `AGENTS.md` antes de modificar código.
-4. Ejecuta `pnpm run agent:skills` si quieres que `pnpm dlx autoskills` detecte skills útiles para el proyecto.
-5. Antes de cerrar una tarea, pide siempre `pnpm run verify`.
+1. Clone this template for any new web project.
+2. Open the project directory in your preferred AI-powered editor or terminal agent.
+3. Prompt your agent to read [AGENTS.md](file:///AGENTS.md) before making any code modifications.
+4. Run `pnpm run agent:skills` to let `autoskills` detect your environment and install helpful agent skills.
+5. Before completing any task, always ask the agent to run `pnpm run verify`.
 
 ## Scripts
 
 ```bash
-pnpm run dev           # servidor local
-pnpm run build         # build de producción
-pnpm run start         # servir build
-pnpm run lint          # oxlint
-pnpm run lint:fix      # oxlint con fixes
-pnpm run knip          # dependencias, exports y archivos sin uso
-pnpm run ui:add        # añadir componentes con shadcn
-pnpm run check         # TypeScript sin emitir archivos
-pnpm run format        # formatear con Prettier
-pnpm run format:check  # comprobar formato
-pnpm test              # tests unitarios
-pnpm run test:watch    # tests en modo watch
-pnpm run audit         # auditoria de vulnerabilidades high+
-pnpm run verify        # lint, knip, tipos, formato, tests, build y audit
-pnpm run agent:skills  # pnpm dlx autoskills
-pnpm run agent:impeccable # instala la skill Impeccable en el harness detectado
-pnpm run design:audit  # detecta patrones visuales flojos con Impeccable
+pnpm run dev           # Start the local development server
+pnpm run build         # Build the application for production
+pnpm run start         # Start the production build locally
+pnpm run lint          # Run oxlint for static analysis
+pnpm run lint:fix      # Run oxlint with automatic fixes
+pnpm run knip          # Find unused dependencies, exports, and files
+pnpm run ui:add        # Add new shadcn UI components
+pnpm run check         # Run TypeScript compiler checks without emitting files
+pnpm run format        # Format codebase using Prettier
+pnpm run format:check  # Check formatting compliance with Prettier
+pnpm test              # Run unit tests using Vitest
+pnpm run test:watch    # Run unit tests in watch mode
+pnpm run audit         # Audit dependencies for high+ vulnerability alerts
+pnpm run verify        # Run lint, knip, typecheck, formatting check, tests, build, and audit
+pnpm run agent:skills  # Run pnpm dlx autoskills to configure agent skills
+pnpm run agent:impeccable # Install the Impeccable skill in your workspace
 ```
 
-## Herramientas opcionales para diseño con agentes
+## AI Agent Tools
+
+This template recommends two core tools to supercharge your AI agent's performance:
+
+### AutoSkills
+
+[AutoSkills](https://www.autoskills.sh/) is an audited command-line utility that automatically detects your project's technology stack (supporting React, Next.js, Vue, Astro, Tailwind, and over 20 other technologies) and installs the best contextual operational guidelines, custom rules, and workflow capabilities for your AI agents (such as Claude Code, Cursor, Windsurf, or Copilot).
+
+Instead of pulling files directly from unverified sources, AutoSkills routes all requests through a secure, reviewed, and audited registry. Selected skill files are downloaded, verified against recorded SHA-256 integrity hashes, and written locally into your project workspace.
+
+To initialize or update the recommended agent skills for this workspace:
+
+```bash
+pnpm run agent:skills
+```
+
+This script executes `pnpm dlx autoskills` to automatically configure your project environment so that any AI assistant instantly understands the directory structure, styling guidelines, and verification rules defined for this stack.
 
 ### Impeccable
 
-[Impeccable](https://impeccable.style/) es una skill para que el agente diseñe, critique, pula y audite interfaces con mejor criterio visual. Vale la pena para esta plantilla porque vive cerca del código, funciona con Codex/Cursor/Claude/Gemini y permite comandos como audit, polish, typeset o colorize.
+[Impeccable](https://impeccable.style/) is a specialized AI skill that empowers agents to design, critique, polish, and audit user interfaces with superior visual judgment. It runs locally and integrates directly into your AI assistant via slash commands.
 
-Instalación recomendada en cada proyecto clonado:
+To install Impeccable in your project workspace:
 
 ```bash
 pnpm run agent:impeccable
 ```
 
-Auditoria visual rapida:
+Once installed, reload your AI coding tool and interact with Impeccable directly from your agent's chat interface:
 
-```bash
-pnpm run design:audit
-```
+- `/impeccable init`: Initialize project design context (creates `DESIGN.md` and `PRODUCT.md`).
+- `/impeccable polish [page]`: Refine spacing, typography, states, copy, and consistency on an existing page.
+- `/impeccable critique`: Audit the UI to identify the highest-priority visual and layout issues.
+- `/impeccable audit`: Perform a technical quality check for accessibility, responsiveness, and performance.
+- `/impeccable live`: Open the live visual editor to point-and-click UI elements in the browser and generate variants directly into your source code.
 
-### Windframe MCP
-
-[Windframe MCP](https://windframe.dev/mcp) conecta tu agente a sistemas de diseño, componentes y tokens Tailwind. Es útil cuando quieres que el agente genere UI con estilos tipo Linear, ShadCN, Notion o Enterprise sin inventarse valores.
-
-No va como dependencia fija de esta plantilla porque requiere cuenta/OAuth y se configura en el cliente MCP del agente, no dentro de Next.js. Úsalo cuando el proyecto necesite una dirección visual más concreta:
-
-```bash
-# Ejemplo Claude Code
-claude mcp add --transport http windframe-mcp https://mcp.windframe.dev/mcp
-```
-
-## Estructura
+## Directory Structure
 
 ```text
 src/
-  app/             # rutas, layouts, sitemap, robots y estilos globales
-  components/      # componentes reutilizables, UI y SEO
-  config/          # configuración del sitio
-  lib/             # utilidades, env, SEO, servicios y Supabase
-  sanity/          # cliente y queries de Sanity
-  test/            # setup de tests
+  app/             # Routes, layouts, sitemap, robots, and global styles
+  components/      # Reusable components, UI, and SEO layouts
+  config/          # Global site configurations
+  lib/             # Utilities, env validators, SEO helpers, and Supabase integration
+  sanity/          # Sanity client configurations and queries
+  test/            # Testing environment configuration
 ```
 
-## SEO, AEO y GEO
+## SEO, AEO, and GEO
 
-La plantilla trae una base razonable para buscadores clásicos y motores de respuesta:
+This template provides a robust setup optimized for traditional search engines (SEO), Answer Engine Optimization (AEO), and Generative Engine Optimization (GEO):
 
-- `src/config/site.ts`: nombre, descripción, URL, locale y keywords.
-- `src/lib/seo.ts`: helper `createPageMetadata()` y JSON-LD.
-- `src/components/seo/json-ld.tsx`: inserta datos estructurados de forma segura.
-- `src/app/sitemap.ts`: genera `/sitemap.xml`.
-- `src/app/robots.ts`: genera `/robots.txt`.
-- `src/app/manifest.ts`: genera `/manifest.webmanifest`.
-- `src/app/opengraph-image.tsx`: genera la imagen social por defecto.
-- `src/app/llms.txt/route.ts`: publica `/llms.txt` para agentes y motores de respuesta.
+- `src/config/site.ts`: Houses site name, description, URL, locale, and keywords.
+- `src/lib/seo.ts`: Provides a `createPageMetadata()` helper and JSON-LD schema builder.
+- `src/components/seo/json-ld.tsx`: Safely injects structured data.
+- `src/app/sitemap.ts`: Dynamically generates `/sitemap.xml`.
+- `src/app/robots.ts`: Generates `/robots.txt`.
+- `src/app/manifest.ts`: Generates `/manifest.webmanifest`.
+- `src/app/opengraph-image.tsx`: Generates a dynamic default social sharing image.
+- `src/app/llms.txt/route.ts`: Serves `/llms.txt` to help web crawlers and AI answer engines easily parse the website's context.
 
-Para cada proyecto, cambia primero `src/config/site.ts` y `NEXT_PUBLIC_APP_URL`. Luego usa `createPageMetadata()` en páginas concretas cuando necesites title, description o canonical propios.
+To customize it for your project, update `src/config/site.ts` and set `NEXT_PUBLIC_APP_URL`. Use the `createPageMetadata()` helper on specific pages to set custom titles, descriptions, or canonical URLs.
 
-## UI con shadcn
+## UI with shadcn
 
-No se instala shadcn como caja cerrada. La plantilla deja la base compatible:
+Rather than installing shadcn as a closed dependency, this template leaves a clean, standard-compatible foundation:
 
-- `components.json` para que el CLI de shadcn sepa donde poner componentes.
-- `src/lib/utils.ts` con `cn()`.
-- `src/components/ui/button.tsx` como primer componente.
-- Variables de color en `src/app/globals.css`.
+- `components.json` tells the shadcn CLI where to put new components.
+- `src/lib/utils.ts` exports the `cn()` class merger utility.
+- `src/components/ui/button.tsx` is included as a starter component.
+- Theme colors and tailwind variables are defined in `src/app/globals.css`.
 
-Puedes añadir componentes con:
+You can add new components at any time:
 
 ```bash
 pnpm dlx shadcn@latest add card input textarea form
 ```
 
-## Supabase
+## Supabase (Optional)
 
-Supabase queda preparado para auth, base de datos y storage sin obligarte a crear cuenta desde el día uno.
+Supabase is pre-configured for authentication, database access, and storage. You don't need to create an account immediately to run the app.
 
-Archivos:
+Key Files:
+- `src/lib/supabase/browser.ts`: Supabase client for client-side components.
+- `src/lib/supabase/server.ts`: Supabase client for Server Components, Route Handlers, and Server Actions.
+- `src/lib/services.ts`: Utility to check if Supabase is active and configured.
 
-- `src/lib/supabase/browser.ts`: cliente para componentes cliente.
-- `src/lib/supabase/server.ts`: cliente para Server Components, Route Handlers y Server Actions.
-- `src/lib/services.ts`: detecta si Supabase está configurado.
-
-Variables:
-
+Environment Variables:
 ```env
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-Uso en cliente:
-
+Usage in Client Components:
 ```tsx
 "use client";
 
@@ -159,34 +162,30 @@ import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 const supabase = createSupabaseBrowserClient();
 ```
 
-Uso en servidor:
-
+Usage in Server Components:
 ```tsx
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 const supabase = await createSupabaseServerClient();
 ```
 
-## Sanity
+## Sanity (Optional)
 
-Sanity queda preparado como CMS headless opcional para blogs, landing pages, portfolios o contenido editable.
+Sanity is prepared as a headless CMS for blogs, landing pages, portfolios, and easily editable content.
 
-Archivos:
+Key Files:
+- `src/sanity/client.ts`: Sanity client initialization.
+- `src/sanity/queries.ts`: Example GROQ query for fetching posts.
+- `src/lib/services.ts`: Utility to check if Sanity is configured.
 
-- `src/sanity/client.ts`: cliente Sanity.
-- `src/sanity/queries.ts`: query de ejemplo para posts.
-- `src/lib/services.ts`: detecta si Sanity está configurado.
-
-Variables:
-
+Environment Variables:
 ```env
 NEXT_PUBLIC_SANITY_PROJECT_ID=
 NEXT_PUBLIC_SANITY_DATASET=production
 SANITY_API_READ_TOKEN=
 ```
 
-Uso:
-
+Usage:
 ```ts
 import { createSanityClient } from "@/sanity/client";
 import { latestPostsQuery } from "@/sanity/queries";
@@ -194,36 +193,36 @@ import { latestPostsQuery } from "@/sanity/queries";
 const posts = await createSanityClient().fetch(latestPostsQuery);
 ```
 
-## Variables de entorno
+## Environment Variables
 
-Copia `.env.example` a `.env.local`:
+Copy `.env.example` to `.env.local` to start defining your variables:
 
 ```bash
 cp .env.example .env.local
 ```
 
-El contrato de entorno vive en `src/lib/env.ts`. Añade ahí cada variable nueva para fallar pronto si falta o tiene mal formato. Supabase y Sanity son opcionales: si faltan sus variables, la app sigue funcionando.
+The system environment contract is defined in `src/lib/env.ts`. Add any new environment variables there to ensure the app fails fast with clear errors if they are missing or malformed during build or runtime. Both Supabase and Sanity are optional; if their variables are missing, the application will still boot.
 
-## Seguridad incluida
+## Out-of-the-box Security
 
-- `poweredByHeader: false`.
-- Headers base: `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`.
-- HSTS solo en producción.
-- `.env*` ignorado por Git.
-- `pnpm audit --audit-level high` en la verificación completa.
-- Dependabot para dependencias JavaScript y GitHub Actions.
-- Hook pre-commit con lint-staged, TypeScript y Vitest.
+- `poweredByHeader` disabled in `next.config.ts`.
+- Basic security headers: `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, and `Permissions-Policy`.
+- HSTS enabled in production environments only.
+- `.env*` files are strictly ignored by Git.
+- `pnpm audit --audit-level high` is run as part of the verification suite.
+- Dependabot configured for JavaScript dependencies and GitHub Actions.
+- Git pre-commit hooks configured with lint-staged, TypeScript type-checking, and Vitest.
 
-## Crear un proyecto desde esta plantilla
+## Creating a Project From This Template
 
-Cuando la subas a GitHub, puedes usarla como template o clonarla:
+Once pushed to GitHub, you can use this repository as a template or clone it manually:
 
 ```bash
-git clone <tu-repo> mi-proyecto
-cd mi-proyecto
+git clone <your-repo-url> my-project
+cd my-project
 pnpm install
 pnpm run agent:skills
 pnpm run verify
 ```
 
-Después cambia `name`, `metadata`, textos de la home y variables de entorno según el proyecto.
+After cloning, customize the site `name`, `metadata`, home page layout, and environment variables to match your project requirements.
