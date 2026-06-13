@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { cookies, headers } from "next/headers";
 
 import { siteConfig } from "@/config/site";
 import { createPageMetadata } from "@/lib/seo";
@@ -25,14 +26,19 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const localeCookie = cookieStore.get("NEXT_LOCALE")?.value;
+  const acceptLanguage = (await headers()).get("accept-language") || "";
+  const locale = localeCookie || (acceptLanguage.startsWith("en") ? "en" : "es");
+
   return (
     <html
-      lang="es"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">{children}</body>
