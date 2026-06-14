@@ -10,7 +10,7 @@ export const locales = {
     checklist: [
       "Next.js App Router con TypeScript estricto",
       "Oxlint, Knip, Prettier, Tailwind y tests listos",
-      "AGENTS.md preparado para agentes y Superpowers",
+      "AGENTS.md preparado para agentes de IA",
       "SEO/AEO/GEO, Supabase y Sanity preparados",
     ],
     firstCommands: "Primeros comandos",
@@ -26,7 +26,7 @@ export const locales = {
     checklist: [
       "Next.js App Router with strict TypeScript",
       "Oxlint, Knip, Prettier, Tailwind, and tests ready",
-      "AGENTS.md ready for agents and Superpowers",
+      "AGENTS.md ready for AI agents",
       "SEO/AEO/GEO, Supabase, and Sanity ready",
     ],
     firstCommands: "Quickstart commands",
