@@ -21,7 +21,10 @@
     "agent:impeccable": "pnpm dlx impeccable skills install",
     "verify": "pnpm run lint && pnpm run knip && pnpm run check && pnpm run format:check && pnpm test && pnpm run build && pnpm run audit",
     "precommit": "lint-staged && pnpm run check && pnpm run test",
-    "prepare": "husky"
+    "prepare": "husky",
+    "viberaven:gate": "npx -y viberaven --agent-mode",
+    "viberaven:verify": "npx -y viberaven --verify",
+    "viberaven:strict": "npx -y viberaven --strict"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
