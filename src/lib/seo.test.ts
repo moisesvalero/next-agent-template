@@ -15,15 +15,18 @@ describe("seo helpers", () => {
     });
 
     expect(metadata.alternates?.canonical).toBe(
-      "http://localhost:3000/contacto",
+      "https://next-agent-template.vercel.app/contacto",
     );
-    expect(metadata.openGraph?.url).toBe("http://localhost:3000/contacto");
+    expect(metadata.openGraph?.url).toBe(
+      "https://next-agent-template.vercel.app/contacto",
+    );
   });
 
   it("creates website json-ld with search action", () => {
     expect(createWebsiteJsonLd().potentialAction).toMatchObject({
       "@type": "SearchAction",
-      target: "http://localhost:3000/search?q={search_term_string}",
+      target:
+        "https://next-agent-template.vercel.app/search?q={search_term_string}",
     });
   });
 
