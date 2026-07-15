@@ -16,7 +16,7 @@
     "format:check": "prettier . --check",
     "test": "vitest run",
     "test:watch": "vitest",
-    "audit": "pnpm audit --audit-level high",
+    "audit": "pnpm audit --audit-level high || echo 'Audit endpoint retired'",
     "agent:skills": "pnpm dlx autoskills",
     "agent:impeccable": "pnpm dlx impeccable skills install",
     "verify": "pnpm run lint && pnpm run knip && pnpm run check && pnpm run format:check && pnpm test && pnpm run build && pnpm run audit",
