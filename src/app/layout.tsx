@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { cookies, headers } from "next/headers";
-
 import { siteConfig } from "@/config/site";
+import { getRequestLocale } from "@/lib/locale";
 import { createPageMetadata } from "@/lib/seo";
 
 import "./globals.css";
@@ -31,11 +30,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const localeCookie = cookieStore.get("NEXT_LOCALE")?.value;
-  const acceptLanguage = (await headers()).get("accept-language") || "";
-  const locale =
-    localeCookie || (acceptLanguage.startsWith("en") ? "en" : "es");
+  const locale = await getRequestLocale();
 
   return (
     <html

@@ -12,5 +12,5 @@ Open a private GitHub security advisory when the repository is used as a real pr
 
 - Keep secrets in `.env.local`, never in Git.
 - Validate new environment variables in `src/lib/env.ts`.
-- Run `npm run verify` before shipping changes.
-- Keep `npm audit --audit-level=high` green.
+- Run `pnpm run verify` before shipping changes.
+- Keep `pnpm audit --audit-level=high` green.

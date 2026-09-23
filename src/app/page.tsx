@@ -1,11 +1,11 @@
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
-import { cookies, headers } from "next/headers";
 
 import { JsonLd } from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
 import { locales } from "@/dictionaries/locales";
+import { getRequestLocale } from "@/lib/locale";
 import {
   createOrganizationJsonLd,
   createSoftwareApplicationJsonLd,
@@ -15,16 +15,7 @@ import {
 const commands = ["pnpm run dev", "pnpm run agent:skills", "pnpm run verify"];
 
 export async function generateMetadata(): Promise<Metadata> {
-  const cookieStore = await cookies();
-  const localeCookie = cookieStore.get("NEXT_LOCALE")?.value;
-  const acceptLanguage = (await headers()).get("accept-language") || "";
-  const locale =
-    localeCookie === "en" || localeCookie === "es"
-      ? localeCookie
-      : acceptLanguage.startsWith("en")
-        ? "en"
-        : "es";
-
+  const locale = await getRequestLocale();
   const t = locales[locale];
 
   return {
@@ -34,16 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-  const cookieStore = await cookies();
-  const localeCookie = cookieStore.get("NEXT_LOCALE")?.value;
-  const acceptLanguage = (await headers()).get("accept-language") || "";
-  const locale =
-    localeCookie === "en" || localeCookie === "es"
-      ? localeCookie
-      : acceptLanguage.startsWith("en")
-        ? "en"
-        : "es";
-
+  const locale = await getRequestLocale();
   const t = locales[locale];
 
   return (
@@ -65,7 +47,7 @@ export default async function Home() {
           <h1 className="text-4xl font-semibold tracking-normal text-balance sm:text-6xl">
             {t.title}
           </h1>
-          <p className="max-w-2xl text-lg leading-8 text-zinc-700">
+          <p className="max-w-2xl text-lg leading-8 text-zinc-700 dark:text-zinc-300">
             {t.description}
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -86,7 +68,7 @@ export default async function Home() {
         <div className="grid gap-4 md:grid-cols-[1.2fr_0.8fr]">
           <div className="border-border bg-card text-card-foreground rounded-lg border p-6 shadow-sm">
             <h2 className="text-lg font-semibold">{t.includes}</h2>
-            <ul className="mt-5 grid gap-3 text-sm text-zinc-700 sm:grid-cols-2">
+            <ul className="mt-5 grid gap-3 text-sm text-zinc-700 sm:grid-cols-2 dark:text-zinc-300">
               {t.checklist.map((item) => (
                 <li key={item} className="flex gap-3">
                   <CheckCircle2

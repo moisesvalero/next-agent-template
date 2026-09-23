@@ -1,5 +1,7 @@
 import { siteConfig } from "@/config/site";
 
+export const dynamic = "force-static";
+
 export function GET() {
   const body = `# ${siteConfig.name}
 
