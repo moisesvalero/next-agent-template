@@ -2,9 +2,9 @@
 
 # Next Agent Template ⚡️
 
-### The Production-Ready, Zero-Bloat Micro-SaaS & AI Agent Starter
+### Production-ready Next.js 16 template engineered for collaboration with AI coding agents
 
-An open-source, full-stack foundation engineered for building modern web applications, AI products, and B2B software in seamless collaboration with AI coding assistants (Claude Code, Cursor, Windsurf, Copilot, Gemini).
+A lightweight, high-performance foundation built from the ground up for developer-agent workflows (Claude Code, Cursor, Windsurf, Copilot, Gemini). Pre-configured with strict boundaries, modular agent instructions, instant Rust tooling, and full-stack capabilities.
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![React 19](https://img.shields.io/badge/React-19-23272F?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
@@ -12,11 +12,10 @@ An open-source, full-stack foundation engineered for building modern web applica
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Better Auth](https://img.shields.io/badge/Better_Auth-Enterprise-black?style=for-the-badge&logo=auth0&logoColor=white)](https://better-auth.com)
 [![Prisma ORM](https://img.shields.io/badge/Prisma-7-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://prisma.io)
-[![Polar.sh](https://img.shields.io/badge/Polar.sh-MoR_Billing-0052FF?style=for-the-badge&logo=polar&logoColor=white)](https://polar.sh)
+[![Polar.sh](https://img.shields.io/badge/Polar.sh-Billing-0052FF?style=for-the-badge&logo=polar&logoColor=white)](https://polar.sh)
 [![Oxlint](https://img.shields.io/badge/Oxlint-Rust_Fast-FF7A00?style=for-the-badge&logo=rust&logoColor=white)](https://oxc.rs)
 [![Vitest](https://img.shields.io/badge/Vitest-Unit_Tests-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)](./LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](https://makeapullrequest.com)
 
 <br />
 
@@ -30,13 +29,17 @@ An open-source, full-stack foundation engineered for building modern web applica
 
 ---
 
-## 🚀 Key Highlights
+## 🤖 Why This Template for AI Coding Agents?
 
-- **Zero-Bloat Developer Experience**: Boots immediately in under 10 seconds. Landing and components work out-of-the-box without requiring local Docker or database instances.
-- **Enterprise Authentication (Better Auth)**: Complete auth stack with B2B organization switching, member invitations, user impersonation, and TOTP 2FA.
-- **Modern Billing & Tax Compliance**: Integrated Polar.sh (Merchant of Record to handle global VAT/sales tax) with Stripe fallback and an atomic, transaction-safe credit ledger.
-- **Rust-Powered Tooling**: Sub-10ms static analysis via Oxlint, automatic dead-code detection via Knip, and fast Vitest suite.
-- **AI-Native Architecture**: Built-in `AGENTS.md` modular guidelines (no barrel files, strict boundaries), and AEO discovery (`llms.txt`, JSON-LD, machine-readable twins).
+Most starter templates are built solely for human developers, ignoring how LLMs parse codebases. This template is architected specifically to maximize the reasoning power, accuracy, and execution speed of AI coding assistants:
+
+- **Context-Window Optimized**: No barrel files (`index.ts`) in internal modules, preventing token waste and circular dependencies. All rule files are strictly under 32 KB.
+- **Hierarchical Agent Rules**: Root `AGENTS.md` establishes overarching invariants, while local domain rules (`src/lib/auth/AGENTS.md`, `src/lib/payments/AGENTS.md`, `src/lib/security/AGENTS.md`) guide agents with laser focus.
+- **Sub-10ms Feedback Loop**: Powered by **Oxlint** in Rust. Agents get instant linter feedback in milliseconds instead of waiting for heavy legacy tooling.
+- **Strict Quality Gates**: `pnpm run verify` and `pnpm run verify:release` provide agents with clear automated verification to self-audit their work before declaring a task complete.
+- **Agent Skill Integrations**: Built-in scripts for `autoskills` and `impeccable` to install domain-specific workflows and design auditing directly in the agent workspace.
+- **AEO Native (AI Engine Optimization)**: Ships with `llms.txt`, machine-readable Markdown twins, and search metadata so external AI models can discover and reason about your site.
+- **Zero-Bloat Boot**: Clones and boots in seconds without forcing local databases or Docker containers. Full-stack modules (Better Auth, Prisma 7, Polar/Stripe) are completely decoupled and opt-in.
 
 ---
 
