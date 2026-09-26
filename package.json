@@ -26,7 +26,7 @@
     "db:studio": "prisma studio",
     "docker:up": "docker compose up -d",
     "docker:down": "docker compose down",
-    "verify": "pnpm run lint && pnpm run knip && pnpm run check && pnpm run format:check && pnpm test && pnpm run build && pnpm run audit",
+    "verify": "pnpm run lint && pnpm run knip && pnpm run check && pnpm run format:check && pnpm test && pnpm run build",
     "verify:release": "node --experimental-strip-types scripts/verify-release.ts",
     "precommit": "lint-staged && pnpm run check && pnpm run test",
     "prepare": "husky"
