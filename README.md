@@ -1,14 +1,72 @@
-# Next Agent Template
+<div align="center">
 
-A Next.js template tailored for building websites and web applications in collaboration with AI agents. It comes pre-configured with TypeScript, App Router, Tailwind CSS 4, oxlint, knip, Prettier, unit tests, pre-commit hooks, environment validation, security headers, and an `AGENTS.md` guide ready for Claude Code, Cursor, Windsurf, Gemini, or other AI coding assistants.
+# Next Agent Template ⚡️
+
+### The Production-Ready, Zero-Bloat Micro-SaaS & AI Agent Starter
+
+**The 100% Free & Open-Source Alternative to $199 Paid SaaS Boilerplates.**  
+Engineered for building modern web applications, AI tools, and B2B products in seamless collaboration with AI coding assistants (Claude Code, Cursor, Windsurf, Copilot, Gemini).
+
+[![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19-23272F?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![Better Auth](https://img.shields.io/badge/Better_Auth-Enterprise-black?style=for-the-badge&logo=auth0&logoColor=white)](https://better-auth.com)
+[![Prisma ORM](https://img.shields.io/badge/Prisma-7-2D3748?style=for-the-badge&logo=prisma&logoColor=white)](https://prisma.io)
+[![Polar.sh](https://img.shields.io/badge/Polar.sh-MoR_Billing-0052FF?style=for-the-badge&logo=polar&logoColor=white)](https://polar.sh)
+[![Oxlint](https://img.shields.io/badge/Oxlint-Rust_Fast-FF7A00?style=for-the-badge&logo=rust&logoColor=white)](https://oxc.rs)
+[![Vitest](https://img.shields.io/badge/Vitest-Unit_Tests-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)](https://vitest.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)](./LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](https://makeapullrequest.com)
+
+<br />
+
+[🌐 **Live Demo**](https://next-agent-template.vercel.app) • [⚡ **Deploy on Vercel**](https://vercel.com/new/clone?repository-url=https://github.com/moisesvalero/next-agent-template) • [⭐ **Star on GitHub**](https://github.com/moisesvalero/next-agent-template)
+
+<br />
 
 ![Template Screenshot](docs/images/home-screenshot.png)
 
-Demo: [https://next-agent-template.vercel.app](https://next-agent-template.vercel.app)
+</div>
+
+---
+
+## 💡 Why Choose This Over Paid $199 Boilerplates?
+
+Most commercial boilerplates charge between $149 and $299 for bloated setups that crash on first clone without Docker, use slow legacy linters, and lock you into complex proprietary structures. **Next Agent Template gives you enterprise-grade SaaS architecture for free:**
+
+| Feature                  | Next Agent Template (Free & MIT)                          | Typical $199 Commercial Boilerplates                          |
+| :----------------------- | :-------------------------------------------------------- | :------------------------------------------------------------ |
+| **Price & Freedom**      | **$0 (100% Free & Open Source)**                          | $149 – $299 (Single-site / proprietary license)               |
+| **Setup Velocity**       | **Zero-Bloat: Boot in 10s without DB/Docker**             | Fails to boot if PostgreSQL/Docker is missing                 |
+| **Modern Auth**          | **Better Auth**: B2B Orgs, 2FA TOTP, Impersonation        | Basic password auth or expensive third-party locks            |
+| **Global Tax & Billing** | **Polar (Merchant of Record)** + Stripe fallback          | Stripe only (leaves global VAT / sales tax compliance to you) |
+| **AI Credit Ledger**     | **Atomic Ledger (`prisma.$transaction`)**                 | Basic database counter (prone to race conditions)             |
+| **Linting Speed**        | **Oxlint in Rust (6ms execution)**                        | Legacy ESLint (5–15 seconds per run)                          |
+| **Search & AI Engines**  | **AEO Native: `llms.txt`, JSON-LD, Bot Detection**        | Standard metadata only                                        |
+| **AI Agent Guidelines**  | **Modular `AGENTS.md` (Zero barrel files, 32KB ceiling)** | Non-existent or flat prompt dump                              |
+
+---
+
+## Quick Start
+
+Get up and running in less than 30 seconds:
+
+```bash
+git clone https://github.com/moisesvalero/next-agent-template.git my-saas
+cd my-saas
+pnpm install
+pnpm run agent:skills
+pnpm run dev
+```
+
+Then open `http://localhost:3000` in your browser. The app runs immediately in **zero-bloat mode** without requiring a database to preview the landing page and UI components!
+
+---
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router)
+- **Framework**: Next.js 16 (App Router + Turbopack)
 - **Library & Language**: React 19 & Strict TypeScript
 - **Styling**: Tailwind CSS v4
 - **Linter**: Oxlint for lightning-fast static analysis (Rust)
@@ -23,16 +81,6 @@ Demo: [https://next-agent-template.vercel.app](https://next-agent-template.verce
 - **UI Base**: shadcn-style component baseline with `components.json`, `cn()` utility, and a `Button` component
 - **Optional Integrations**: Pre-configured Supabase and Sanity clients
 - **SEO/AEO/GEO**: Pre-configured metadata, sitemap, robots, manifest, dynamic Open Graph, `llms.txt` route, and JSON-LD structured data
-
-## Quick Start
-
-```bash
-pnpm install
-pnpm run agent:skills
-pnpm run dev
-```
-
-Then open `http://localhost:3000` in your browser. The app runs immediately in zero-bloat mode without requiring a database to boot.
 
 ## Working with AI Agents
 
@@ -260,14 +308,28 @@ The system environment contract is defined in `src/lib/env.ts`. Add any new envi
 
 ## Creating a Project From This Template
 
-Once pushed to GitHub, you can use this repository as a template or clone it manually:
+You can click the green **"Use this template"** button at the top of this repository on GitHub, or clone it manually:
 
 ```bash
-git clone <your-repo-url> my-project
-cd my-project
+git clone https://github.com/moisesvalero/next-agent-template.git my-saas
+cd my-saas
 pnpm install
 pnpm run agent:skills
 pnpm run verify
 ```
 
 After cloning, customize the site `name`, `metadata`, home page layout, and environment variables to match your project requirements.
+
+---
+
+## 🌟 Support & Community
+
+If this free boilerplate saves you time or money compared to closed $199 alternatives, please consider giving it a **Star on GitHub** ⭐ — it helps the project reach more developers and vibe coders!
+
+- **Found a bug?** [Open an issue](https://github.com/moisesvalero/next-agent-template/issues)
+- **Have an idea?** Pull requests and feature suggestions are warmly welcomed!
+- **Author:** [Moisés Valero](https://github.com/moisesvalero)
+
+## License
+
+Released under the [MIT License](./LICENSE). Free for commercial and personal projects without restrictions.
