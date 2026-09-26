@@ -4,8 +4,7 @@
 
 ### The Production-Ready, Zero-Bloat Micro-SaaS & AI Agent Starter
 
-**The 100% Free & Open-Source Alternative to $199 Paid SaaS Boilerplates.**  
-Engineered for building modern web applications, AI tools, and B2B products in seamless collaboration with AI coding assistants (Claude Code, Cursor, Windsurf, Copilot, Gemini).
+An open-source, full-stack foundation engineered for building modern web applications, AI products, and B2B software in seamless collaboration with AI coding assistants (Claude Code, Cursor, Windsurf, Copilot, Gemini).
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![React 19](https://img.shields.io/badge/React-19-23272F?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
@@ -31,20 +30,13 @@ Engineered for building modern web applications, AI tools, and B2B products in s
 
 ---
 
-## 💡 Why Choose This Over Paid $199 Boilerplates?
+## 🚀 Key Highlights
 
-Most commercial boilerplates charge between $149 and $299 for bloated setups that crash on first clone without Docker, use slow legacy linters, and lock you into complex proprietary structures. **Next Agent Template gives you enterprise-grade SaaS architecture for free:**
-
-| Feature                  | Next Agent Template (Free & MIT)                          | Typical $199 Commercial Boilerplates                          |
-| :----------------------- | :-------------------------------------------------------- | :------------------------------------------------------------ |
-| **Price & Freedom**      | **$0 (100% Free & Open Source)**                          | $149 – $299 (Single-site / proprietary license)               |
-| **Setup Velocity**       | **Zero-Bloat: Boot in 10s without DB/Docker**             | Fails to boot if PostgreSQL/Docker is missing                 |
-| **Modern Auth**          | **Better Auth**: B2B Orgs, 2FA TOTP, Impersonation        | Basic password auth or expensive third-party locks            |
-| **Global Tax & Billing** | **Polar (Merchant of Record)** + Stripe fallback          | Stripe only (leaves global VAT / sales tax compliance to you) |
-| **AI Credit Ledger**     | **Atomic Ledger (`prisma.$transaction`)**                 | Basic database counter (prone to race conditions)             |
-| **Linting Speed**        | **Oxlint in Rust (6ms execution)**                        | Legacy ESLint (5–15 seconds per run)                          |
-| **Search & AI Engines**  | **AEO Native: `llms.txt`, JSON-LD, Bot Detection**        | Standard metadata only                                        |
-| **AI Agent Guidelines**  | **Modular `AGENTS.md` (Zero barrel files, 32KB ceiling)** | Non-existent or flat prompt dump                              |
+- **Zero-Bloat Developer Experience**: Boots immediately in under 10 seconds. Landing and components work out-of-the-box without requiring local Docker or database instances.
+- **Enterprise Authentication (Better Auth)**: Complete auth stack with B2B organization switching, member invitations, user impersonation, and TOTP 2FA.
+- **Modern Billing & Tax Compliance**: Integrated Polar.sh (Merchant of Record to handle global VAT/sales tax) with Stripe fallback and an atomic, transaction-safe credit ledger.
+- **Rust-Powered Tooling**: Sub-10ms static analysis via Oxlint, automatic dead-code detection via Knip, and fast Vitest suite.
+- **AI-Native Architecture**: Built-in `AGENTS.md` modular guidelines (no barrel files, strict boundaries), and AEO discovery (`llms.txt`, JSON-LD, machine-readable twins).
 
 ---
 
@@ -324,7 +316,7 @@ After cloning, customize the site `name`, `metadata`, home page layout, and envi
 
 ## 🌟 Support & Community
 
-If this free boilerplate saves you time or money compared to closed $199 alternatives, please consider giving it a **Star on GitHub** ⭐ — it helps the project reach more developers and vibe coders!
+If you find this template helpful for your projects or vibe coding workflow, please consider giving it a **Star on GitHub** ⭐ — it helps more developers discover the project!
 
 - **Found a bug?** [Open an issue](https://github.com/moisesvalero/next-agent-template/issues)
 - **Have an idea?** Pull requests and feature suggestions are warmly welcomed!
