@@ -4,7 +4,7 @@
 
 ### Production-ready Next.js 16 template engineered for collaboration with AI coding agents
 
-A lightweight, high-performance foundation built from the ground up for developer-agent workflows (Claude Code, Cursor, Windsurf, Copilot, Gemini). Pre-configured with strict boundaries, modular agent instructions, instant Rust tooling, and full-stack capabilities.
+A lightweight, high-performance foundation built from the ground up for developer-agent workflows (Claude Code, Cursor, Codex, OpenCode, Antigravity, Copilot, Gemini). Pre-configured with strict boundaries, modular agent instructions, instant Rust tooling, and full-stack capabilities.
 
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![React 19](https://img.shields.io/badge/React-19-23272F?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev/)
@@ -119,7 +119,7 @@ This template recommends two core tools to supercharge your AI agent's performan
 
 ### AutoSkills
 
-[AutoSkills](https://www.autoskills.sh/) is an audited command-line utility that automatically detects your project's technology stack (supporting React, Next.js, Vue, Astro, Tailwind, and over 20 other technologies) and installs the best contextual operational guidelines, custom rules, and workflow capabilities for your AI agents (such as Claude Code, Cursor, Windsurf, or Copilot).
+[AutoSkills](https://www.autoskills.sh/) is an audited command-line utility that automatically detects your project's technology stack (supporting React, Next.js, Vue, Astro, Tailwind, and over 20 other technologies) and installs the best contextual operational guidelines, custom rules, and workflow capabilities for your AI agents (such as Claude Code, Cursor, Codex, OpenCode, Antigravity, or Copilot).
 
 Instead of pulling files directly from unverified sources, AutoSkills routes all requests through a secure, reviewed, and audited registry. Selected skill files are downloaded, verified against recorded SHA-256 integrity hashes, and written locally into your project workspace.
 
