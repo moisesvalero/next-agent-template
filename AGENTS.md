@@ -47,11 +47,14 @@ If a check cannot be executed, explain why and state the associated risks.
 ## Project Conventions
 
 - Strict TypeScript usage.
-- Next.js App Router under `src/app`.
+- Next.js App Router under `src/app`. **CRITICAL**: `src/app` is ONLY for routing files (`page.tsx`, `layout.tsx`, `loading.tsx`, `error.tsx`, `route.ts`). Never place reusable business logic or custom components directly in `src/app`.
 - Reusable components under `src/components`.
-- Utilities and validators under `src/lib`.
+- Utilities, auth, payments, security, and validators under `src/lib`.
+- **NO BARREL EXPORTS**: Never create `index.ts` barrel files inside internal feature folders. Always import directly from specific module files (`@/lib/auth/server`, `@/components/ui/button`) to preserve fast compilation and clean tree-shaking.
+- **MODULE RULES**: Sub-domains carry their own local rules (`src/lib/auth/AGENTS.md`, `src/lib/payments/AGENTS.md`, `src/lib/security/AGENTS.md`). Check these when touching those domains.
 - Site config and SEO metadata definitions in `src/config/site.ts` and `src/lib/seo.ts`.
 - shadcn-style components in `src/components/ui`. Use `components.json` as the configuration contract for new components.
+- Better Auth is the primary SaaS authentication engine (`src/lib/auth`).
 - Supabase integrations are optional and reside in `src/lib/supabase`. Do not instantiate Supabase clients if env variables are missing.
 - Sanity integrations are optional and reside in `src/sanity`. Do not instantiate Sanity clients if env variables are missing.
 - Write tests alongside the code or in `__tests__` folders, using `.test.ts` or `.test.tsx` extensions.

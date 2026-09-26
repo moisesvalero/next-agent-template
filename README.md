@@ -11,12 +11,15 @@ Demo: [https://next-agent-template.vercel.app](https://next-agent-template.verce
 - **Framework**: Next.js 16 (App Router)
 - **Library & Language**: React 19 & Strict TypeScript
 - **Styling**: Tailwind CSS v4
-- **Linter**: Oxlint for lightning-fast static analysis
+- **Linter**: Oxlint for lightning-fast static analysis (Rust)
 - **Dead Code/Dependency Detector**: Knip to catch unused dependencies, exports, and files
 - **Formatter**: Prettier with Tailwind CSS class sorting
 - **Testing**: Vitest, jsdom, and React Testing Library
 - **Git Hooks**: Husky & lint-staged to validate code before every commit
 - **Validation**: Zod for strict environment variable validation
+- **SaaS Auth**: Better Auth (Admin roles, user impersonation, multi-tenant organizations, TOTP 2FA)
+- **Database & ORM**: Prisma ORM with PostgreSQL adapter and visual web studio
+- **Monetization & Credits**: Polar (Merchant of Record) and Stripe with an atomic credit ledger
 - **UI Base**: shadcn-style component baseline with `components.json`, `cn()` utility, and a `Button` component
 - **Optional Integrations**: Pre-configured Supabase and Sanity clients
 - **SEO/AEO/GEO**: Pre-configured metadata, sitemap, robots, manifest, dynamic Open Graph, `llms.txt` route, and JSON-LD structured data
@@ -29,7 +32,7 @@ pnpm run agent:skills
 pnpm run dev
 ```
 
-Then open `http://localhost:3000` in your browser.
+Then open `http://localhost:3000` in your browser. The app runs immediately in zero-bloat mode without requiring a database to boot.
 
 ## Working with AI Agents
 
@@ -37,26 +40,33 @@ Then open `http://localhost:3000` in your browser.
 2. Open the project directory in your preferred AI-powered editor or terminal agent.
 3. Prompt your agent to read [AGENTS.md](file:///AGENTS.md) before making any code modifications.
 4. Run `pnpm run agent:skills` to let `autoskills` detect your environment and install helpful agent skills.
-5. Before completing any task, always ask the agent to run `pnpm run verify`.
+5. Before completing any task, always ask the agent to run `pnpm run verify` or `pnpm run verify:release`.
 
 ## Scripts
 
 ```bash
-pnpm run dev           # Start the local development server
-pnpm run build         # Build the application for production
-pnpm run start         # Start the production build locally
-pnpm run lint          # Run oxlint for static analysis
-pnpm run lint:fix      # Run oxlint with automatic fixes
-pnpm run knip          # Find unused dependencies, exports, and files
-pnpm run ui:add        # Add new shadcn UI components
-pnpm run check         # Run TypeScript compiler checks without emitting files
-pnpm run format        # Format codebase using Prettier
-pnpm run format:check  # Check formatting compliance with Prettier
-pnpm test              # Run unit tests using Vitest
-pnpm run test:watch    # Run unit tests in watch mode
-pnpm run audit         # Audit dependencies for high+ vulnerability alerts
-pnpm run verify        # Run lint, knip, typecheck, formatting check, tests, build, and audit
-pnpm run agent:skills  # Run pnpm dlx autoskills to configure agent skills
+pnpm run dev              # Start the local development server
+pnpm run build            # Build the application for production
+pnpm run start            # Start the production build locally
+pnpm run lint             # Run oxlint for static analysis
+pnpm run lint:fix         # Run oxlint with automatic fixes
+pnpm run knip             # Find unused dependencies, exports, and files
+pnpm run ui:add           # Add new shadcn UI components
+pnpm run check            # Run TypeScript compiler checks without emitting files
+pnpm run format           # Format codebase using Prettier
+pnpm run format:check     # Check formatting compliance with Prettier
+pnpm test                 # Run unit tests using Vitest
+pnpm run test:watch       # Run unit tests in watch mode
+pnpm run audit            # Audit dependencies for high+ vulnerability alerts
+pnpm run db:generate      # Generate Prisma client types
+pnpm run db:push          # Push schema changes to database
+pnpm run db:migrate       # Run Prisma migrations in development
+pnpm run db:studio        # Open Prisma Studio web visual database viewer
+pnpm run docker:up        # Start optional local PostgreSQL container
+pnpm run docker:down      # Stop local PostgreSQL container
+pnpm run verify           # Run lint, knip, typecheck, formatting check, tests, build, and audit
+pnpm run verify:release   # Run comprehensive release audit (agent rules size, AEO accessibility, build)
+pnpm run agent:skills     # Run pnpm dlx autoskills to configure agent skills
 pnpm run agent:impeccable # Install the Impeccable skill in your workspace
 ```
 
@@ -199,6 +209,34 @@ import { latestPostsQuery } from "@/sanity/queries";
 
 const posts = await createSanityClient().fetch(latestPostsQuery);
 ```
+
+## SaaS Architecture (Better Auth, Billing & Credits)
+
+This template provides a production-grade, opt-in SaaS architecture that you can activate whenever your project evolves into a commercial micro-SaaS:
+
+### Better Auth & Organizations
+
+- **Multi-tenancy**: Teams, member roles (`owner`, `admin`, `member`), and email invitations out-of-the-box.
+- **Admin & Impersonation**: Built-in support to impersonate users during customer support sessions and enforce account bans.
+- **Two-Factor Authentication**: TOTP with QR codes and backup codes.
+- **Server and Client Helpers**:
+  - Server: `import { auth } from "@/lib/auth/server"`
+  - Client: `import { authClient, signIn, signOut, useSession } from "@/lib/auth/client"`
+
+### Database & Prisma Studio
+
+The schema is defined in `prisma/schema.prisma` with models for `User`, `Session`, `Organization`, `CreditBalance`, `CreditTransaction`, and `AuditLog`.
+
+- **Cloud Database (Zero-Install)**: Simply paste your PostgreSQL URL (Neon, Supabase, etc.) in `DATABASE_URL`.
+- **Local Database (Docker)**: Run `pnpm run docker:up` to spin up PostgreSQL locally.
+- **Visual DB Viewer**: Run `pnpm run db:studio` to open an interactive, spreadsheet-like interface in your browser to inspect or edit records with a click.
+
+### Hybrid Billing & Credit Ledger
+
+- **Polar.sh (Default)**: Functions as a Merchant of Record (MoR) to handle global sales tax and VAT compliance automatically.
+- **Stripe**: Configurable by setting `PAYMENT_PROVIDER=stripe`.
+- **Atomic Credit Ledger**: Located in `src/lib/payments/credits.ts`. Provides `addCredits` and `consumeCredits` backed by Prisma transactions to prevent race conditions or negative balances.
+- **Private Dashboard**: Navigate to `/dashboard` to inspect the responsive user session, active organization, 2FA status, and credit packages.
 
 ## Environment Variables
 

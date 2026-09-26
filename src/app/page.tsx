@@ -1,5 +1,6 @@
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { JsonLd } from "@/components/seo/json-ld";
 import { Button } from "@/components/ui/button";
@@ -61,6 +62,9 @@ export default async function Home() {
               <a href="https://github.com/moisesvalero/next-agent-template#readme">
                 {t.readReadme}
               </a>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href="/dashboard">SaaS Dashboard</Link>
             </Button>
           </div>
         </div>
