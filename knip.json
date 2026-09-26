@@ -1,13 +1,11 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "ignore": [
-    "scripts/**",
     "src/lib/supabase/**",
     "src/sanity/**",
     "src/lib/auth/**",
     "src/lib/payments/**",
-    "src/lib/security/**",
-    "src/generated/**"
+    "src/lib/security/**"
   ],
   "ignoreDependencies": [
     "@sanity/client",
@@ -15,7 +13,6 @@
     "@supabase/supabase-js",
     "groq",
     "@polar-sh/better-auth",
-    "@polar-sh/sdk",
-    "@prisma/adapter-pg"
+    "@polar-sh/sdk"
   ]
 }
