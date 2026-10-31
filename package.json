@@ -40,7 +40,7 @@
     "@sanity/client": "^7.22.1",
     "@supabase/ssr": "^0.10.3",
     "@supabase/supabase-js": "^2.106.2",
-    "better-auth": "^1.7.6",
+    "better-auth": "^1.7.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "groq": "^5.27.0",
